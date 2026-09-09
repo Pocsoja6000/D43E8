@@ -1,0 +1,93 @@
+4.1.
+Listázd ki a `tanulok` tábla összes adatát!
+SELECT * FROM tanulok
+
+### 4.2.
+Listázd ki a tanulók nevét!
+SELECT nev FROM tanulok
+
+### 4.3.
+Jelenítsd meg minden tanuló nevét és osztályát!
+SELECT nev,osztaly FROM tanulok
+
+### 4.4.
+Listázd ki a tanulók nevét, tanulmányi átlagát és hiányzásainak számát!
+SELECT nev,atlag,hianyzas FROM tanulok
+
+### 4.5.
+Egy kapcsolattartási listához jelenítsd meg a tanulók azonosítóját, nevét, városát és e-mail-címét!
+SELECT id,nev,varos,email FROM tanulok
+
+### 5.1.
+Listázd ki a 10.A osztály tanulóinak nevét!
+SELECT nev FROM tanulok
+WHERE osztaly = "10.A"
+
+### 5.2.
+Listázd ki azokat a tanulókat, akiknek a tanulmányi átlaga legalább 4,0!
+SELECT nev FROM tanulok
+WHERE atlag >= "4"
+
+### 5.3.
+Listázd ki, hogy mely településeken laknak a tanulók! Egy település csak egyszer jelenjen meg az eredményben!
+SELECT DISTINCT varos FROM tanulok
+
+### 5.4.
+Listázd ki a tanulók nevét és átlagát átlag szerint csökkenő sorrendben!
+SELECT nev,atlag FROM tanulok
+ORDER BY atlag DESC
+
+### 5.5.
+Listázd ki a budapesti tanulók nevét és átlagát! Az eredményt átlag szerint csökkenő sorrendben jelenítsd meg!
+SELECT nev,atlag FROM tanulok
+WHERE varos = "Budapest"
+ORDER BY atlag DESC
+
+### 6.1.
+Listázd ki azokat a tanulókat, akik legalább 17 évesek és legalább 4,0 a tanulmányi átlaguk!
+SELECT nev,eletkor,atlag FROM tanulok
+WHERE eletkor >= "17" AND atlag >= "4"
+ORDER BY atlag DESC
+
+### 6.2.
+Listázd ki a Budapesten vagy Érden lakó tanulókat!
+Jelenítsd meg a nevüket és a városukat!
+SELECT nev,varos FROM tanulok
+WHERE varos = "Budapest" OR varos = "Érd"
+
+### 6.3.
+Listázd ki azokat a tanulókat, akik nem a 10.A osztályba járnak!
+SELECT nev,osztaly FROM tanulok
+WHERE osztaly  != "10.A"
+
+### 6.4.
+Listázd ki a 10.A vagy 10.B osztályba járó tanulók közül azokat, akiknek legalább 3,5 a tanulmányi átlaguk!
+Jelenítsd meg a nevüket, osztályukat és átlagukat!
+Az eredményt átlag szerint csökkenő sorrendben jelenítsd meg!
+SELECT nev,osztaly,atlag FROM tanulok
+WHERE osztaly = "10.A" OR osztaly = "10.B"
+ORDER BY atlag DESC
+
+### 6.5.
+Listázd ki azokat a tanulókat, akik:
+
+- Budapesten vagy Érden laknak,
+- legalább 4,0 a tanulmányi átlaguk,
+- és nem a 11.B osztályba járnak.
+Jelenítsd meg a nevüket, városukat, osztályukat és átlagukat!
+Az eredményt átlag szerint csökkenő sorrendben rendezd!
+SELECT nev,varos,osztaly,atlag FROM tanulok
+WHERE varos = "Érd"
+OR varos = "Budapest" 
+AND atlag >= "4"
+AND osztaly != "11.B"
+ORDER BY atlag desc
+
+
+
+
+
+
+
+
+
