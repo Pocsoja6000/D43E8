@@ -83,11 +83,194 @@ AND atlag >= "4"
 AND osztaly != "11.B"
 ORDER BY atlag desc
 
+### 7.1.
+Listázd ki azokat a tanulókat, akikhez nincs e-mail-cím megadva!
+SELECT id,nev,email FROM tanulok
+WHERE email IS null
 
 
+### 7.2.
+Vedd fel az adatbázisba az alábbi új tanulót:
+
+- azonosító: `9`
+- név: `Kovács Emma`
+- osztály: `10.A`
+- életkor: `16`
+- város: `Budapest`
+- tanulmányi átlag: `4.0`
+- hiányzások száma: `3`
+- nem ösztöndíjas
+- e-mail-címe nincs megadva
+
+A beszúrás után kérdezd le Kovács Emma teljes rekordját!
+INSERT INFO tanulok 
+VALUES(9,"Kovács Emma","10.A",16,"Budapest",4.0,3,FALSE,null)
 
 
+### 7.3.
+Kovács Emma e-mail-címe elkészült:
+
+`emma@iskola.hu`
+
+Módosítsd az adatbázisban az e-mail-címét!
+
+Ezután kérdezd le az azonosítóját, nevét és e-mail-címét!
+
+### 7.4.
+Kovács Emma tanulmányi átlaga `4.5`-re javult, és ösztöndíjas lett.
+Módosítsd mindkét adatát **egyetlen SQL utasítással**!
+Ezután jelenítsd meg a nevét, átlagát és ösztöndíjas státuszát!
+
+UPDATE tanulok SET atlag = 4.5 AND osztondijas = 1
+WHERE nev = "Kovács Emma"
+
+### 7.5.
+Kovács Emma elkerült az iskolából.
+Töröld a rekordját az adatbázisból!
+Ezután határozd meg, hány tanuló maradt a `tanulok` táblában!
+
+DELETE FROM tanulok WHERE id = 9
+SELECT COUNT(id) FROM tanulok
 
 
+### 8.1.
+Jelenítsd meg az első három tanulót azonosító szerint!
+Csak az azonosítójuk és nevük jelenjen meg!
 
+SELECT id,nev FROM tanulok LIMIT 3
+
+### 8.2.
+Jelenítsd meg a három legjobb tanulmányi átlaggal rendelkező tanulót!
+A név és az átlag jelenjen meg!
+
+SELECT nev,atlag FROM tanulok
+ORDER BY atlag DESC LIMIT 3
+
+### 8.3.
+Jelenítsd meg a két legkevesebbet hiányzó tanulót!
+
+A név és a hiányzások száma jelenjen meg!
+
+SELECT nev,hianyzas FROM tanulok
+ORDER BY hianyzas ASC LIMIT 2
+
+### 8.4.
+Jelenítsd meg a három legjobb tanulmányi átlaggal rendelkező budapesti tanulót!
+
+A név és az átlag jelenjen meg!
+
+SELECT nev,ATLAG FROM tanulok
+WHERE varos = "Budapest"
+ORDER BY ATLAG desc LIMIT 3
+
+
+A 11.A és 11.B osztály tanulói közül jelenítsd meg a két legjobb tanulmányi átlaggal rendelkező tanulót!
+
+Jelenítsd meg:
+
+- a nevüket,
+- az osztályukat,
+- a tanulmányi átlagukat.
+
+SELECT nev,ATLAG,osztaly FROM tanulok
+WHERE osztaly = "11.A" 
+OR osztaly = "11.B"
+ORDER BY osztaly asc
+
+
+### 9.1.
+Határozd meg, hány tanuló található a `tanulok` táblában!
+SELECT COUNT(id) FROM tanulok
+
+### 9.2.
+Határozd meg a legkisebb hiányzásszámot!
+SELECT MIN(hianyzas) FROM tanulok
+
+### 9.3.
+Határozd meg az adatbázisban szereplő legjobb tanulmányi átlagot!
+SELECT max(atlag) FROM tanulok
+
+### 9.4.
+Határozd meg, hogy a tanulóknak összesen hány hiányzásuk van!
+SELECT sum(hianyzas) FROM tanulok
+
+### 9.5.
+Határozd meg a Budapesten lakó tanulók tanulmányi átlagainak átlagát!
+SELECT AVG(atlag) FROM tanulok
+WHERE varos = "Budapest"
+
+### 10.1.
+Jelenítsd meg a legalább 4,0 tanulmányi átlaggal rendelkező tanulók közül a három legjobb eredményű tanulót!
+
+Jelenítsd meg:
+
+- a nevüket,
+- a tanulmányi átlagukat.
+
+SELECT nev,atlag FROM tanulok
+WHERE atlag >= 4 LIMIT 3
+
+### 10.2.
+Jelenítsd meg a három legjobb tanulmányi átlaggal rendelkező tanulót azok közül, akik:
+
+- legalább 17 évesek,
+- és Budapesten vagy Érden laknak.
+
+Jelenítsd meg:
+
+- a nevüket,
+- életkorukat,
+- városukat,
+- tanulmányi átlagukat.
+
+SELECT nev,eletkor,varos,at
+WHERE eletkor >= 17        
+AND varos = "Érd"          
+OR varos = "Budapest"      
+ORDER BY atlag DESC LIMIT 3
+
+
+### 10.3.
+Határozd meg, hány olyan tanuló van, aki:
+
+- nem ösztöndíjas,
+- és 10-nél több hiányzása van!
+
+SELECT COUNT(id) FROM tanulok
+WHERE osztondijas = 0 AND hianyzas > 10
+
+### 10.4.
+Határozd meg azoknak a 10.A osztályos tanulóknak az átlagos tanulmányi eredményét, 
+akiknek legfeljebb 6 hiányzásuk van!
+
+SELECT avg(atlag) FROM tanulok
+WHERE osztaly = "10.A" AND hianyzas < 6
+
+
+### 10.5.
+Az iskola két tanulót szeretne kiválasztani egy tanulmányi programra.
+
+A kiválasztás feltételei:
+
+- Budapesten vagy Érden lakjon,
+- legalább 4,0 legyen a tanulmányi átlaga,
+- legfeljebb 8 hiányzása legyen,
+- ne a 11.B osztályba járjon.
+
+A feltételeknek megfelelő tanulók közül jelenítsd meg a **két legjobb tanulmányi átlaggal rendelkező tanulót**!
+
+Az eredményben szerepeljen:
+
+- név,
+- város,
+- osztály,
+- tanulmányi átlag,
+- hiányzások száma.
+
+SELECT nev,varos,osztaly,atlag,hianyzas FROM tanulok
+WHERE atlag >= 4 
+AND hianyzas < 8
+AND osztaly != "11.B"
+AND varos = "Budapest"
+OR varos = "Érd"
 
