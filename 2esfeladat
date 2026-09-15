@@ -1,0 +1,276 @@
+4.1 SELECT cim,mufaj,ertekeles FROM filmek
+
+4.2 SELECT id,cim,megjelenes\_eve,hossz\_perc FROM filmek
+
+4.3 SELECT cim,korhatar,jegyar FROM filmek
+
+4.4 SELECT cim,rendezo FROM filmek
+
+4.5 SELECT \* FROM filmek
+
+
+
+5.1 SELECT cim,megjelenes\_eve FROM filmek WHERE megjelenes\_eve >= 2015
+
+ORDER BY megjelenes\_eve DESC
+
+
+
+5.2 SELECT cim,hossz\_perc FROM filmek WHERE hossz\_perc < 120
+
+ORDER BY hossz\_perc asc
+
+
+
+5.3 SELECT DISTINCT mufaj FROM filmek
+
+
+
+5.4 SELECT cim,jegyar FROM filmek ORDER BY jegyar asc
+
+
+
+5.5 SELECT cim,mufaj,ertekeles FROM filmek
+
+WHERE ertekeles >= 7.5 AND ertekeles <= 8.5
+
+ORDER BY ertekeles desca
+
+
+
+6.1 SELECT cim,mufaj,ertekeles FROM filmek WHERE ertekeles >= 7.5
+
+AND mufaj = "Sci-fi" OR mufaj = "Drama"
+
+
+
+6.2 SELECT cim,korhatar FROM filmek WHERE korhatar != 16
+
+ORDER BY korhatar ASC
+
+
+
+6.3 SELECT cim,megjelenes\_eve FROM filmek WHERE megjelenes\_eve >= 2010 AND megjelenes\_eve <2020
+
+
+
+6.4 SELECT cim,mufaj FROM filmek WHERE cim LIKE "@a@"
+
+
+
+6.5 SELECT cim,korhatar,jegyar,ertekeles FROM filmek WHERE jegyar <= 2500
+
+AND korhatar <= 12 ORDER BY ertekeles desc
+
+
+
+7.1 SELECT id,cim,rendezo FROM filmek WHERE rendezo IS null
+
+
+
+7.2 INSERT INTO filmek VALUES (13,"Mars-expedíció","Sci-fi",2026,138,12,7.6,3100,0,0)
+
+
+
+
+
+7.3 UPDATE filmek SET rendezo = "Nagy Viktor"
+
+WHERE id = 13 
+
+SELECT cim,rendezo FROM filmek WHERE id = 13
+
+
+
+7.4 UPDATE filmek 
+
+SET ertekeles = 8.1, magyar\_szinkron = 1 
+
+WHERE id = 13
+
+
+
+7.5 DELETE from filmek WHERE id = 13
+
+
+
+
+
+8.1 SELECT cim,megjelenes\_eve FROM filmek 
+
+ORDER BY megjelenes\_eve LIMIT 4
+
+
+
+8.2 SELECT cim,jegyar FROM filme
+
+ORDER BY jegyar DESC LIMIT 3
+
+
+
+8.3 
+
+SELECT cim,hossz\_perc,korhatar FROM filmek WHERE korhatar <= 12
+
+ORDER BY hossz\_perc ASC LIMIT 2
+
+
+
+8.4 **SELECT cim,ertekeles FROM filmek**
+
+**WHERE magyar\_szinkron = 1**
+
+**ORDER BY ertekeles DESC LIMIT 3**
+
+
+
+**8,5 SELECT  cim,mufaj,jegyar FROM filmek**
+
+**WHERE mufaj = "Krimi"**
+
+**OR mufaj = "Sci-fi"**
+
+**OR mufaj = "Dráma"**
+
+**ORDER BY jegyar ASC LIMIT 4**
+
+
+
+**9.1** SELECT COUNT(magyar\_szinkron) FROM filmek
+
+WHERE magyar\_szinkron = 1
+
+
+
+9,2 SELECT avg(hossz\_perc) FROM filmek
+
+
+
+9.3 SELECT MAX(jegyar) FROM filmek
+
+
+
+9.4 SELECT avg(ertekeles) FROM filmek
+
+WHERE mufaj = "Sci-fi"
+
+
+
+9.5 SELECT sum(jegyar) FROM filmek
+
+WHERE korhatar = 12
+
+
+
+10.1 SELECT cim,hossz\_perc,ertekeles FROM filmek 
+
+WHERE hossz\_perc <= 130 AND
+
+ertekeles >= 7 ORDER BY ertekeles DESC LIMIT 3
+
+
+
+10.2 SELECT cim,korhatar,ertekeles,jegyar FROM filmek 
+
+WHERE korhatar <= 12 AND magyar\_szinkron = 1
+
+AND jegyar <= 2500
+
+ORDER BY ertekeles DESC 
+
+
+
+**10.3**
+
+**SELECT COUNT(id) FROM filmek WHERE** 
+
+**megjelenes\_eve > 2014 AND**
+
+**hossz\_perc >= 120**
+
+**AND ertekeles >= 7.5**
+
+
+
+**10.4 SELECT AVG(jegyar) FROM filmek WHERE**
+
+**mufaj = "Sci-fi" OR**
+
+**mufaj = "Drama" OR**
+
+**mufaj = "Krimi"**
+
+**AND ertekeles >= 7.5**
+
+
+
+**10.5 SELECT cim,mufaj,megjelenes\_eve,hossz\_perc,ertekeles,jegyar FROM filmek**
+
+**WHERE ertekeles >= 7.8 AND**
+
+**megjelenes\_eve > 2010 AND**
+
+**hossz\_perc <= 160 and**
+
+**korhatar != 16 AND**
+
+**magyar\_szinkron = 1**
+
+**ORDER BY ertekeles desc**
+
+**LIMIT 2**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
